@@ -1,0 +1,110 @@
+body{
+	background-color: #c0c0c0;
+	font-family: Arial, Verdana, sans-serif;
+	margin: 5% 5%;
+	font-weight: normal;
+	font-size: medium;
+	color: #000000;
+	text-decoration: none;
+}
+
+h1 {
+	font-family: "Comic Sans", cursive;
+	font-weight: bolder;
+	font-size: 180%;
+	color: #800000;
+	margin-bottom: 2px;
+}
+
+h2{
+	font-family: "Arial Black", sans-serif;
+	font-weight: bolder;
+	font-size: 150%;
+	color: #800000;
+}
+
+h3{
+	font-family: "Arial Black", sans-serif;
+	font-weight: bolder;
+	font-size: 120%;
+	color: #800000;
+	padding-left: 30px;
+	margin-top: 2px;
+}
+
+h4 {
+	background-color: #990000;
+	margin-bottom: 3px;
+	font-weight: bolder;
+	font-size: 120%;
+	color: #ffffff;
+}
+
+
+nav {
+	margin: 5px 5px;
+	background-color: #32cd32;
+	border: solid  3px #800000;
+	padding: 2px 5px;	
+}
+
+nav ul {
+	list-style: none; 
+	text-align: center;
+}
+
+nav ul li {
+	display: inline;
+	background-color: #bbbbbb; 
+	padding: 3px;
+	border: 1px outset #000080; 
+	text-decoration: none;
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
+}
+
+input.submit{
+	border: groove 2px #4682b4;
+	background-color: #3d4d7a;
+	font-weight: bolder;
+	font-size: large;
+	color: #800000;
+	float: right;
+}
+
+section#controls {
+	border: dotted 2px #000000;
+	margin-left: 8%;
+	padding: 5px 5px;
+	width: 36%;
+	float: left;
+}
+
+section#your_css {
+	border: dotted 2px #000000;
+	margin-right: 8%;
+	padding: 5px 5px;
+	width: 44%;
+	float: right;
+	clear: none;
+}
+
+
+a:link{		/* unvisited link */
+	color: #0000FF;
+	text-decoration: none;
+} 
+a:visited{		/* visited link */
+	color: #4B0082;
+	text-decoration: underline;
+}	
+a:hover{	/* mouse over link */
+	color: #9400D3;
+	text-decoration: underline;
+	font-size:125%;
+}	
+a:active {	/* selected link */
+	color: #FF0000;
+	text-decoration: underline;
+}
