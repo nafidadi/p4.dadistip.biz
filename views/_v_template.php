@@ -18,12 +18,22 @@
 
 <body>	
 	<nav id='menu'>
-
-		<ul>
-			<li><a href='/'>Home</a></li>
-            		<li><a href='/search'>Search Hotels</a></li>
-			<li><a href='/users/signup'>Sign up</a></li>
-		</ul>
+		<?php if($user): ?>
+			<ul>
+				<li><a href='/'>Home</a></li>
+            			<li><a href='/posts'>Profile</a></li>
+				<li><a href='/search'>Search Hotels</a></li>
+				<li><a href='/users/logout'>Logout</a></li>
+			</ul>
+			<!-- Menu options for users who are not logged in -->
+        		<?php else: ?>
+			<ul>
+				<li><a href='/'>Home</a></li>
+				<li><a href='/search'>Search Hotels</a></li>
+            			<li><a href='/users/signup'>Sign up</a></li>
+            			<li><a href='/users/login'>Log in</a></li>
+			</ul>
+        	<?php endif; ?>
 	</nav>
 
 	<?php if(isset($contentTop)) echo $contentTop; ?>

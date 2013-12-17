@@ -39,6 +39,15 @@ class search_controller extends base_controller {
 		$where_condition = "WHERE ( hotel_name LIKE '%$find%' OR neighborhood LIKE '%$find%' ) AND city = $city";
 		if($find != '') {
 			$q = "SELECT * FROM hotels " .$where_condition;
+			/*$q = "SELECT hotels .*, posts.content, posts.created, users.nick_name
+			      FROM hotels
+			      INNER JOIN posts
+				ON hotels.hotel_id = posts.hotel_id
+			      INNER JOIN users
+				ON posts.user_id = users.user_id " .$where_condition
+			      ." UNION
+			      SELECT DISTINCT *, null, null, null 
+				FROM hotels " .$where_condition;*/
 
 			$hotelinfo = DB::instance(DB_NAME)->select_rows($q);
 			$this->template->contentBottom->hotelinfo = $hotelinfo;
