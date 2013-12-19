@@ -2,7 +2,7 @@
 class posts_controller extends base_controller {
 
     public function __construct() {
-	parent::__construct();
+        parent::__construct();
 
         # Make sure user is logged in if they want to use anything in this controller
         if(!$this->user) {
@@ -14,7 +14,7 @@ class posts_controller extends base_controller {
 
         # Setup view
         $this->template->content = View::instance('v_posts_add');
-        $this->template->title   = "Comments";
+        $this->template->title = "Comments";
 
         # Render template
         echo $this->template;
@@ -24,10 +24,10 @@ class posts_controller extends base_controller {
     public function p_add() {
 
         # Associate this post with this user
-        $_POST['user_id']  = $this->user->user_id;
+        $_POST['user_id'] = $this->user->user_id;
 
         # Unix timestamp of when this post was created / modified
-        $_POST['created']  = Time::now();
+        $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
 
         # Insert
@@ -36,37 +36,72 @@ class posts_controller extends base_controller {
 
         # Quick and dirty feedback
         #echo "Your post has been added. <a href='/posts/add'>Add another</a>";
-	Router::redirect("/users/profile");
+        Router::redirect("/posts");
     }
 
     public function index() {
-	# Query
-    	$q = 'SELECT 
-            	posts.content,
-            	posts.created,
-            	posts.user_id,
-            	users.first_name,
-            	users.last_name,
-		hotels.hotel_name
-            FROM posts
-            INNER JOIN users 
-            	ON posts.user_id = users.user_id
-	    INNER JOIN hotels
-		ON posts.hotel_id = hotels.hotel_id
-	    ORDER BY posts.created DESC';
+        # Query
+           $q = 'SELECT
+        	posts.content,
+        	posts.created,
+	        posts.user_id,
+        	users.first_name,
+	        users.last_name,
+                hotels.hotel_name
+	   FROM posts
+	   INNER JOIN users
+        	ON posts.user_id = users.user_id
+           INNER JOIN hotels
+                ON posts.hotel_id = hotels.hotel_id
+           ORDER BY posts.created DESC';
 
-    	# Run the query
-    	$posts = DB::instance(DB_NAME)->select_rows($q);
+            # Run the query
+            $posts = DB::instance(DB_NAME)->select_rows($q);
 
-	# Set up the View
+        # Set up the View
         $this->template->content = View::instance('v_posts_index');
-        $this->template->title   = "Posts";
+        $this->template->title = "Posts";
 
-	# Pass data to the View
+        # Pass data to the View
         $this->template->content->posts = $posts;
 
-    	# Render the View
-    	echo $this->template;
+            # Render the View
+            echo $this->template;
 
+    }
+
+    public function edit($post_id) {
+        # Set up view
+        $this->template->content = View::instance('v_posts_edit');
+
+        $q = "SELECT * FROM posts where post_id = '$post_id'";
+        $post = DB::instance(DB_NAME)->select_row($q);
+
+        $this->template->content->post_id = $post_id;
+        $this->template->title = "Edit Post";
+
+        # Render view
+        echo $this->template;
+
+    }
+
+    public function p_edit($post_id) {
+
+        $content = $_POST['content'];
+
+        $data = Array('content' => $content);
+        #$where_condition = 'WHERE post_id = '.$post_id;
+        DB::instance(DB_NAME)->update('posts', $data, "WHERE post_id = '$post_id'");
+
+        Router::redirect('/posts');
+
+    }
+
+    public function delete($post_id) {
+        #$where_condition = 'WHERE post_id = ' . $post_id;
+	DB::instance(DB_NAME)->delete('posts', "WHERE post_id = '$post_id'");
+	#DB::instance(DB_NAME)->delete('posts', $where_condition);
+
+       Router::redirect('/posts/');
     }
 }

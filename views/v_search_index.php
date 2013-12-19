@@ -1,3 +1,4 @@
+<section id='search_hotel'>
 <form name='search' method='POST' action='/search'>
 	<input name='find' type='text' />
 	<select name='city' id='city_name'>
@@ -20,3 +21,4 @@
 	<select>
 	<input name='search' type='submit' value='Search' />
 </form>
+</section>

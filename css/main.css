@@ -1,8 +1,8 @@
 body{
 	background-color: #c0c0c0;
-	background-image: url(/images/Background_01.png);
+	background-image: url(/images/Background_02.png);
 	font-family: Arial, Verdana, sans-serif;
-	margin: 5% 5%;
+	margin: 3% 5%;
 	font-weight: normal;
 	font-size: medium;
 	color: #000000;
@@ -37,7 +37,7 @@ h4 {
 	background-color: #990000;
 	margin-bottom: 3px;
 	font-weight: bolder;
-	font-size: 120%;
+	font-size: 100%;
 	color: #ffffff;
 }
 
@@ -65,33 +65,94 @@ nav ul li {
 	font-weight: bold;
 }
 
-input.submit{
-	border: groove 2px #4682b4;
-	background-color: #3d4d7a;
+input, select {
+	width: 200px;
+	height: 24px;
+	border: solid 2px #8b0000;
+	border-radius: 5px;
+	background-color: #87ceeb;
+	color: #000000;
+	font-size: large;
+}
+
+select {
+	height: 30px;
+}
+
+input:focus, textarea:focus {
+	border-style: dashed;
+	border-color: #8b0000;
+}
+
+input[type='submit']{
+	
+	background-color: #008080;
+	height: 30px;
 	font-weight: bolder;
 	font-size: large;
-	color: #800000;
-	float: right;
+	color: #ffffff;
+	/*float: right;*/
 }
 
-section#controls {
-	border: dotted 2px #000000;
-	margin-left: 8%;
-	padding: 5px 5px;
+#search_hotel {
+	margin: auto;
+	width: 70%;
+	text-align: center;
+}
+
+#search_results {
+	margin-top: 20px;
+	padding-left: 20px;
+}
+
+article time {
+	font-style: italic;
+	color: #0000ff;
+}
+
+#new_post label {
+	color: #008000;
+}
+
+#new_post, #edit_post {
+	width: 40%;
+}
+
+article {
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+fieldset {
+	border: solid 1px #ffefd5;
+	background-color: #1e90ff;
+	border-radius: 10px;
+}
+
+hr {
+	width: 60%;
+	height: 2px;
+	background-color: #4b0082; 
+}
+#signup, #login {
+	margin: auto;
 	width: 36%;
-	float: left;
+	text-align: center;
 }
 
-section#your_css {
-	border: dotted 2px #000000;
-	margin-right: 8%;
+#main_page {
+	border: solid 2px #8b0000;
+	margin: 10px auto;
 	padding: 5px 5px;
-	width: 44%;
-	float: right;
-	clear: none;
+	width: 90%;
+	min-height: 480px;
+	background-image: url(/images/Background_01.png);
 }
 
-
+address {
+	font-style: italic;
+	color: #800000;
+}
 a:link{		/* unvisited link */
 	color: #0000FF;
 	text-decoration: none;

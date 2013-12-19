@@ -1,7 +1,7 @@
 <section id='signup'>
 	<form name='register' id='register' method='POST' action='/users/p_signup'>
 		<fieldset>
-		<h3> Sign Up for tellAtale!</h3>
+		<h3>Welcome, Signup Please!</h3>
     		First Name:<br />
     		<input type='text' name='first_name' value='' required><br /><br />
 

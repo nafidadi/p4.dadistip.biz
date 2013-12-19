@@ -1,0 +1,9 @@
+#search_hotel {
+	margin: 5px, 5px;
+	padding: 2px, 2px;
+}
+
+input[type='text'] {
+	width: 160px;
+	height: 100px;
+}

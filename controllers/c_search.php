@@ -22,11 +22,11 @@ class search_controller extends base_controller {
                         $this->template->title = "Nashville Area Hotels";
 		
                 # CSS/JS includes
-                /*
-                $client_files_head = Array("");
+                
+                $client_files_head = Array('/css/search_hotel.css');
                 $this->template->client_files_head = Utils::load_client_files($client_files);
                 
-                $client_files_body = Array("");
+                /*$client_files_body = Array("");
                 $this->template->client_files_body = Utils::load_client_files($client_files_body);   
                 */
 
@@ -47,26 +47,11 @@ class search_controller extends base_controller {
 				ON posts.user_id = users.user_id " .$where_condition;
 
 			$hotelinfo = DB::instance(DB_NAME)->select_rows($q);
-			/*$comments = DB::instance(DB_NAME)->select_rows($query);*/
 			$this->template->contentBottom->hotelinfo = $hotelinfo;
-			/*$this->template->contentBottom->comments = $comments;*/
 		} 
                 # Render the view
                         echo $this->template;
 
         } # End of method
 
-	public function p_search() {
-		/*
-		$this->template->content = View::instance('v_search_results');
-                $q = "SELECT *
-                     FROM hotels
-                     WHERE hotel_name LIKE '%$_POST%'";
-
-                $hotelinfo = DB::instance(DB_NAME)->select_rows($q);
-                $this->template->content->hotelinfo = $hotelinfo;
-
-		echo $this->template;
-		*/
-	}
 } # End of class
