@@ -35,8 +35,14 @@ class search_controller extends base_controller {
 		echo '</pre>';*/
 
 		$find = $_POST['find'];
+		$keys = explode(" ", $find);
 		$city = $_POST['city'];
-		$where_condition = "WHERE ( hotel_name LIKE '%$find%' OR neighborhood LIKE '%$find%' ) AND city = $city";
+		/*$where_condition = "WHERE hotel_name LIKE '%$find%' AND city = $city";*/
+		$where_condition = "WHERE city = $city ";
+		foreach($keys AS $key) {
+			$where_condition .= "AND hotel_name LIKE '%$key%'";
+		}
+		
 		if($find != '') {
 			/*$q = "SELECT * FROM hotels " .$where_condition;*/
 			$q = "SELECT hotels .*, posts.content, posts.created, users.nick_name
