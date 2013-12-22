@@ -5,6 +5,8 @@
 	   they signed up. Logged in users can also edit or delete their earlier comments by going to their profile page.
 	   Searching for a hotel returns: <em>the name, address, phone number, email(if available) and website</em> of the 
 	   hotel.
+	</p>
+	
 	   <h4>Features</h4>
 	   <ul>
 		<li>Search Hotels in various Cities in TN</li>
@@ -20,6 +22,4 @@
 		<li>Three tables in the database: users, posts and hotels</li>
                 <li>In the database, only hotels in Nashville (Downtown and Airport areas) are included</li>
            </ul>
-
-	</p>
 </section>
