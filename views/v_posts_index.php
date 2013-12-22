@@ -15,8 +15,8 @@
 	<article>
 		<p>You commented about <?=$post['hotel_name']?>:</p>
 		
-		<time datetime="<?php echo Time::display($post['created'],'Y-m-d G:i')?>">
-			<?php echo Time::display($post['created'])?>
+		<time datetime="<?php echo Time::display($post['modified'],'Y-m-d G:i')?>">
+			<?php echo Time::display($post['modified'])?>
 		</time>
 		<br />
 		<?php echo $post['content']?><br />		

@@ -9,7 +9,8 @@
 					
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-
+	<script src="js/jquery.form.js"></script>
+	<script src="js/jquery.validate.js"></script>
 	<script src="js/comment.js"></script>
 					
 </head>
@@ -20,16 +21,16 @@
 			<ul>
 				<li><a href='/'>Home</a></li>
             			<li><a href='/posts'>Profile</a></li>
-				<li><a href='/search'>Hotels</a></li>
+				<li class='search_nav'><a href='/search'>Hotels</a></li>
 				<li><a href='/users/logout'>Logout</a></li>
 			</ul>
 			<!-- Menu options for users who are not logged in -->
         		<?php else: ?>
 			<ul>
 				<li><a href='/'>Home</a></li>
-				<li><a href='/search'>Hotels</a></li>
-            			<li><a href='/users/signup'>Sign up</a></li>
-            			<li><a href='/users/login'>Log in</a></li>
+				<li class='search_nav'><a href='/search'>Hotels</a></li>
+            			<li id='signup_nav'><a href='/users/signup'>Sign up</a></li>
+            			<li id='login_nav'><a href='/users/login'>Log in</a></li>
 			</ul>
         	<?php endif; ?>
 	</nav>

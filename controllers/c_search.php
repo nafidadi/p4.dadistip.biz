@@ -17,22 +17,17 @@ class search_controller extends base_controller {
                 # First, set the content of the template with a view file
                         $this->template->contentTop = View::instance('v_search_index');
 			$this->template->contentBottom = View::instance('v_search_results');
-
                 # Now set the <title> tag
                         $this->template->title = "Nashville Area Hotels";
 		
                 # CSS/JS includes
                 
-                $client_files_head = Array('/css/search_hotel.css');
-                $this->template->client_files_head = Utils::load_client_files($client_files);
+                /*$client_files_head = Array('/css/search_hotel.css');
+                $this->template->client_files_head = Utils::load_client_files($client_files);*/
                 
-                /*$client_files_body = Array("");
+                $client_files_body = Array("js/search.js");
                 $this->template->client_files_body = Utils::load_client_files($client_files_body);   
-                */
-
-		/*echo '<pre>';
-			print_r($_POST);
-		echo '</pre>';*/
+                
 
 		$find = $_POST['find'];
 		$keys = explode(" ", $find);
@@ -45,7 +40,7 @@ class search_controller extends base_controller {
 		
 		if($find != '') {
 			/*$q = "SELECT * FROM hotels " .$where_condition;*/
-			$q = "SELECT hotels .*, posts.content, posts.created, users.nick_name
+			$q = "SELECT hotels .*, posts.content, posts.created, posts.modified, users.nick_name
 			      FROM hotels
 			      LEFT JOIN posts
 				ON hotels.hotel_id = posts.hotel_id

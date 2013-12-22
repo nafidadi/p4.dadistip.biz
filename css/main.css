@@ -80,7 +80,7 @@ select {
 }
 
 input:focus, textarea:focus {
-	border-style: dashed;
+	border-style: dotted;
 	border-color: #8b0000;
 }
 
@@ -136,8 +136,8 @@ hr {
 }
 #signup, #login {
 	margin: auto;
-	width: 36%;
-	text-align: center;
+	width: 42%;
+	/*text-align: center;*/
 }
 
 #main_page {
@@ -153,6 +153,15 @@ address {
 	font-style: italic;
 	color: #800000;
 }
+
+#signin fieldset label.error {
+	color: red;
+}
+
+#signin fieldset input.error {
+	border: 1px solid red;
+}
+
 a:link{		/* unvisited link */
 	color: #0000FF;
 	text-decoration: none;

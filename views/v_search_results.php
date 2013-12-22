@@ -9,11 +9,11 @@
                 website: <a href='http://<?=$hotel['website']?>'><?=$hotel['website']?></a>
 	</address>
 
-	<section class='comment'>
+	<section>
 		<?php if($hotel['content'] != NULL): ?>
 		<article id='posts'>
-			<time datetime="<?php echo Time::display($hotel['created'],'Y-m-d G:i')?>">
-        			<?php echo Time::display($hotel['created'])?>
+			<time datetime="<?php echo Time::display($hotel['modified'],'Y-m-d G:i')?>">
+        			<?php echo Time::display($hotel['modified'])?>
     			</time>
 			<?php echo "posted by ".$hotel['nick_name'].": "?>
 			<br />
@@ -32,7 +32,7 @@
 			</form> 
 		</article>
                 <?php else: ?>
-			<a href='#'>Leave A Comment</a>
+			<div class='comment'><a href='#'>Leave A Comment</a></div>
                 <?php endif; ?>
 	</section>
 

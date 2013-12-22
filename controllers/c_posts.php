@@ -42,8 +42,10 @@ class posts_controller extends base_controller {
     public function index() {
         # Query
            $q = 'SELECT
+		posts.post_id,
         	posts.content,
         	posts.created,
+		posts.modified,
 	        posts.user_id,
         	users.first_name,
 	        users.last_name,
@@ -53,7 +55,7 @@ class posts_controller extends base_controller {
         	ON posts.user_id = users.user_id
            INNER JOIN hotels
                 ON posts.hotel_id = hotels.hotel_id
-           ORDER BY posts.created DESC';
+           ORDER BY posts.modified DESC';
 
             # Run the query
             $posts = DB::instance(DB_NAME)->select_rows($q);
@@ -71,13 +73,13 @@ class posts_controller extends base_controller {
     }
 
     public function edit($post_id) {
-        # Set up view
         $this->template->content = View::instance('v_posts_edit');
 
-        $q = "SELECT * FROM posts where post_id = '$post_id'";
+	$q = "SELECT * FROM posts where post_id = '$post_id'";
         $post = DB::instance(DB_NAME)->select_row($q);
 
-        $this->template->content->post_id = $post_id;
+        $this->template->content->post = $post;
+
         $this->template->title = "Edit Post";
 
         # Render view
@@ -86,10 +88,11 @@ class posts_controller extends base_controller {
     }
 
     public function p_edit($post_id) {
-
+	$_POST['modified'] = Time::now();
         $content = $_POST['content'];
+	$modified = $_POST['modified'];
 
-        $data = Array('content' => $content);
+        $data = Array('content' => $content, 'modified' => $modified);
         #$where_condition = 'WHERE post_id = '.$post_id;
         DB::instance(DB_NAME)->update('posts', $data, "WHERE post_id = '$post_id'");
 
@@ -101,7 +104,7 @@ class posts_controller extends base_controller {
         #$where_condition = 'WHERE post_id = ' . $post_id;
 	DB::instance(DB_NAME)->delete('posts', "WHERE post_id = '$post_id'");
 	#DB::instance(DB_NAME)->delete('posts', $where_condition);
-
-       Router::redirect('/posts/');
+	
+	Router::redirect('/posts/');
     }
 }
