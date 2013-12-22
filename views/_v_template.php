@@ -11,8 +11,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="js/jquery.form.js"></script>
 	<script src="js/jquery.validate.js"></script>
-	<script src="js/comment.js"></script>
-					
 </head>
 
 <body>	

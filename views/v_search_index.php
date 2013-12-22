@@ -18,7 +18,7 @@
 		<option value='13'>Portland</option>
 		<option value='14'>Dickson</option>
 		<option value='15'>Columbia</option>
-	<select>
+	</select>
 	<input name='search' type='submit' value='Search' />
 </form>
 </section>

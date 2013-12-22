@@ -118,6 +118,10 @@ article time {
 	width: 40%;
 }
 
+#info {
+	margin: 10px 20px;
+}
+
 article {
 	margin-left: 30px;
 	margin-top: 10px;

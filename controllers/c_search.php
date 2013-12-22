@@ -25,7 +25,7 @@ class search_controller extends base_controller {
                 /*$client_files_head = Array('/css/search_hotel.css');
                 $this->template->client_files_head = Utils::load_client_files($client_files);*/
                 
-                $client_files_body = Array("js/search.js");
+                $client_files_body = Array("/js/search.js", "/js/comment.js");
                 $this->template->client_files_body = Utils::load_client_files($client_files_body);   
                 
 
@@ -35,11 +35,15 @@ class search_controller extends base_controller {
 		/*$where_condition = "WHERE hotel_name LIKE '%$find%' AND city = $city";*/
 		$where_condition = "WHERE city = $city ";
 		foreach($keys AS $key) {
-			$where_condition .= "AND hotel_name LIKE '%$key%'";
+			if($key == 'hotel' || $key == 'inn' || $key == 'suites') {
+				continue;
+			}
+			else {
+				$where_condition .= "AND hotel_name LIKE '%$key%'";
+			}
 		}
 		
 		if($find != '') {
-			/*$q = "SELECT * FROM hotels " .$where_condition;*/
 			$q = "SELECT hotels .*, posts.content, posts.created, posts.modified, users.nick_name
 			      FROM hotels
 			      LEFT JOIN posts

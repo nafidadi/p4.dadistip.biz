@@ -1,8 +1,3 @@
-p4.dadistip.biz
-===============
-
-Project 4 -- final
-
 Description
 
 This is an application for searching hotels in Nashville, TN and surrounding cities. The feature can be accessed by clicking on the 'Hotels' navigation menu. It also lets users to leave their comments about the hotel once they they signed up. Logged in users can also edit or delete their earlier comments by going to their profile page. Searching for a hotel returns: the name, address, phone number, email(if available) and website of the hotel.

@@ -6,7 +6,7 @@ class posts_controller extends base_controller {
 
         # Make sure user is logged in if they want to use anything in this controller
         if(!$this->user) {
-            die("You need to be logged in to access posts. <a href='/users/login'>Login</a>");
+            Router::redirect('/users/login');
         }
     }
 
@@ -15,6 +15,9 @@ class posts_controller extends base_controller {
         # Setup view
         $this->template->content = View::instance('v_posts_add');
         $this->template->title = "Comments";
+
+	$client_files_body = Array("/js/comment.js");
+        $this->template->client_files_body = Utils::load_client_files($client_files_body);
 
         # Render template
         echo $this->template;
@@ -29,6 +32,7 @@ class posts_controller extends base_controller {
         # Unix timestamp of when this post was created / modified
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
+	$_POST['content'] = trim($_POST['content']);
 
         # Insert
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
@@ -57,8 +61,8 @@ class posts_controller extends base_controller {
                 ON posts.hotel_id = hotels.hotel_id
            ORDER BY posts.modified DESC';
 
-            # Run the query
-            $posts = DB::instance(DB_NAME)->select_rows($q);
+	# Run the query
+	$posts = DB::instance(DB_NAME)->select_rows($q);
 
         # Set up the View
         $this->template->content = View::instance('v_posts_index');
@@ -89,7 +93,7 @@ class posts_controller extends base_controller {
 
     public function p_edit($post_id) {
 	$_POST['modified'] = Time::now();
-        $content = $_POST['content'];
+        $content = trim($_POST['content']);
 	$modified = $_POST['modified'];
 
         $data = Array('content' => $content, 'modified' => $modified);

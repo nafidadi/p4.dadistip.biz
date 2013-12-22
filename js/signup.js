@@ -1,25 +1,13 @@
 $(document).ready( function() {
-	$('#login_nav').click( function() {
-		$("input[name='email']").focus();
-	}
-
-	/*$('.submit').click( function() {
-		e.preventDefault();
-		var urEmail = $('#signin #email').val();
-		if($.trim(urEmail) == '') {
-			alert('invalid');
-			
-		}
-	});*/
-
 	$('.submit').click( function() {
-
-		$('#signin').validate( {
+		$('#register').validate( {
 			debug: true
 		});
-
-		$('#signin').validate( {
+		$('#register').validate( {
 			rules: {
+				first_name: 'required',
+				last_name: 'required',
+				timezone: 'required',
 				email: {
 					required:true,
 					email:true
@@ -27,6 +15,9 @@ $(document).ready( function() {
 				password:'required'
 			},
 			messages: {
+				first_name: 'Please enter first name',
+				last_name: 'Please enter last name',
+				timezone: 'Please select your time zone',
 				email: 'Please enter a valid email address',
 				password:'Please enter a password'
 			},
@@ -36,4 +27,8 @@ $(document).ready( function() {
 			}
 		});
 	});
-}
+
+	$('#signup_nav').click( function() {
+		$("input[name='first_name']").focus();
+	}
+});

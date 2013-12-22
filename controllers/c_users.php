@@ -14,8 +14,10 @@ class users_controller extends base_controller {
     public function login() {
 	$this->template->content = View::instance('v_users_login');
         $this->template->title = "Login";
-	$client_files_body = Array("js/login.js");
+
+	$client_files_body = Array("/js/login.js");
 	$this->template->client_files_body = Utils::load_client_files($client_files_body);
+
         echo $this->template;
     }
 
@@ -95,6 +97,9 @@ class users_controller extends base_controller {
 	# Setup view
 	$this->template->content = View::instance('v_users_signup');
         $this->template->title   = "Sign Up";
+	
+	$client_files_body = Array("/js/signup.js");
+        $this->template->client_files_body = Utils::load_client_files($client_files_body);
 
         # Render template
         echo $this->template;
