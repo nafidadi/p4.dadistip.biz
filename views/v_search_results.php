@@ -12,8 +12,8 @@
 	<section>
 		<?php if($hotel['content'] != NULL): ?>
 		<article id='posts'>
-			<time datetime="<?php echo Time::display($hotel['modified'],'Y-m-d G:i')?>">
-        			<?php echo Time::display($hotel['modified'])?>
+			<time datetime="<?=Time::display($hotel['modified'], 'Y-m-d G:i')?>" >
+        			<?=Time::display($hotel['modified'])?>
     			</time>
 			<?php echo "posted by ".$hotel['nick_name'].": "?>
 			<br />
